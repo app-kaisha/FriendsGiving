@@ -1,5 +1,5 @@
 //
-//  ContentView.swift
+//  ListView.swift
 //  FriendsGiving
 //
 //  Created by app-kaihatsusha on 28/01/2026.
@@ -8,7 +8,7 @@
 
 import SwiftUI
 
-struct ContentView: View {
+struct ListView: View {
     var body: some View {
         VStack {
             Image(systemName: "globe")
@@ -21,5 +21,5 @@ struct ContentView: View {
 }
 
 #Preview {
-    ContentView()
+    ListView()
 }

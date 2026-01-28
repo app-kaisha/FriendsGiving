@@ -12,7 +12,10 @@ import SwiftUI
 struct FriendsGivingApp: App {
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            ListView()
+                .onAppear {
+                    Thread.sleep(forTimeInterval: 3)
+                }
         }
     }
 }
