@@ -10,9 +10,13 @@ import SwiftUI
 
 @main
 struct FriendsGivingApp: App {
+    
+    @State private var friendsVM = FriendsViewModel()
+    
     var body: some Scene {
         WindowGroup {
             ListView()
+                .environment(friendsVM)
                 .onAppear {
                     Thread.sleep(forTimeInterval: 3)
                 }

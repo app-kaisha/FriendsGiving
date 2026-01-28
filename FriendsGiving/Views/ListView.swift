@@ -9,17 +9,19 @@
 import SwiftUI
 
 struct ListView: View {
+    
+    @Environment(FriendsViewModel.self) private var friendsVM
+    
     var body: some View {
         VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundStyle(.tint)
-            Text("Hello, world!")
+            Text("Friends Giving")
+            
         }
-        .padding()
+       
     }
 }
 
 #Preview {
     ListView()
+        .environment(FriendsViewModel())
 }
