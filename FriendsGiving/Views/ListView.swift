@@ -32,6 +32,13 @@ struct ListView: View {
                             }
                         }
                     }
+                    .onDelete { indexSet in
+                        friendsVM.deleteFriend(friendIndex: indexSet)
+                    }
+                    .onMove { oldPostion, newPosition in
+                        friendsVM.moveFriend(from: oldPostion, to: newPosition)
+                    }
+                    
                 }
                 .listStyle(.plain)
                 

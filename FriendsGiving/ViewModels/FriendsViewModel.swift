@@ -23,12 +23,18 @@ class FriendsViewModel {
     
     func saveFriend(friend: Friend) {
         if let index = friends.firstIndex(where: { $0.id == friend.id }) {
-            print("This is existing")
             friends[index] = friend
         } else {
-            print("This is new")
             friends.append(friend)
         }
+    }
+    
+    func deleteFriend(friendIndex: IndexSet) {
+        friends.remove(atOffsets: friendIndex)
+    }
+    
+    func moveFriend(from: IndexSet, to: Int) {
+        friends.move(fromOffsets: from, toOffset: to)
     }
 }
 
