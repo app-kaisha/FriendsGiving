@@ -32,7 +32,7 @@ struct DetailView: View {
                 .padding(.bottom)
             Text("Notes:")
                 .bold()
-            TextField("notes", text: $friend.notes)
+            TextField("notes", text: $friend.notes, axis: .vertical)
                 .textFieldStyle(.roundedBorder)
                 .autocorrectionDisabled()
                 .padding(.bottom)

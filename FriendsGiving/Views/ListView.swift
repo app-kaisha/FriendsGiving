@@ -63,6 +63,25 @@ struct ListView: View {
         }
         
     }
+    
+    
+//    func playSound(soundName: String) {
+//        
+//        if audioPlayer != nil && audioPlayer.isPlaying {
+//            audioPlayer.stop()
+//        }
+//        guard let soundFile = NSDataAsset(name: soundName) else {
+//            print("😡 Could not read file named \(soundName)")
+//            return
+//        }
+//        
+//        do {
+//            audioPlayer = try AVAudioPlayer(data: soundFile.data)
+//            audioPlayer.play()
+//        } catch {
+//            print("😡 ERROR: \(error.localizedDescription) creating audioPlayer.")
+//        }
+//    }
 }
 
 #Preview {
