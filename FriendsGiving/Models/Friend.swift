@@ -26,4 +26,5 @@ struct Friend: Identifiable, Codable {
         self.bringing = bringing
         self.notes = notes
     }
+    
 }

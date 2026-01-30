@@ -12,16 +12,55 @@ struct ListView: View {
     
     @Environment(FriendsViewModel.self) private var friendsVM
     
+    @State private var isSheetPresented = false
+    
     var body: some View {
-        VStack {
-            Text("Friends Giving")
-            
+        NavigationStack {
+            VStack {
+                List {
+                    ForEach(friendsVM.friends) { friend in
+                        NavigationLink {
+                            DetailView(friend: friend)
+                                .environment(friendsVM)
+                        } label: {
+                            VStack(alignment: .leading) {
+                                Text(friend.name)
+                                    .font(.title2)
+                                Text(friend.bringing)
+                                    .font(.callout)
+                                    .foregroundStyle(.secondary)
+                            }
+                        }
+                    }
+                }
+                .listStyle(.plain)
+                
+            }
+            .navigationTitle("Friends")
+            .toolbar {
+                ToolbarItem(placement: .confirmationAction) {
+                    Button("", systemImage: "plus") {
+                        isSheetPresented.toggle()
+                    }
+                }
+                ToolbarItem(placement: .topBarLeading) {
+                    EditButton()
+                }
+            }
+
         }
-       
+        .sheet(isPresented: $isSheetPresented) {
+            NavigationStack {
+                DetailView(friend: Friend())
+            }
+        }
+        
     }
 }
 
 #Preview {
-    ListView()
-        .environment(FriendsViewModel())
+    NavigationStack {
+        ListView()
+            .environment(FriendsViewModel())
+    }
 }

@@ -11,6 +11,7 @@ import SwiftUI
 struct DetailView: View {
     
     @Environment(\.dismiss) private var dismiss
+    @Environment(FriendsViewModel.self) private var friendsVM
     
     @State var friend: Friend
 
@@ -21,21 +22,25 @@ struct DetailView: View {
                 .bold()
             TextField("name", text: $friend.name)
                 .textFieldStyle(.roundedBorder)
+                .autocorrectionDisabled()
                 .padding(.bottom)
             Text("Bringing:")
                 .bold()
             TextField("bringing", text: $friend.bringing)
                 .textFieldStyle(.roundedBorder)
+                .autocorrectionDisabled()
                 .padding(.bottom)
             Text("Notes:")
                 .bold()
             TextField("notes", text: $friend.notes)
                 .textFieldStyle(.roundedBorder)
+                .autocorrectionDisabled()
                 .padding(.bottom)
             Spacer()
         }
         .padding()
         .navigationBarBackButtonHidden()
+        .navigationBarTitleDisplayMode(.inline)
         .toolbar {
             ToolbarItem(placement: .cancellationAction) {
                 Button("Cancel") {
@@ -44,6 +49,9 @@ struct DetailView: View {
             }
             ToolbarItem(placement: .confirmationAction) {
                 Button("Save") {
+                    
+                    friendsVM.saveFriend(friend: friend)
+                    
                     dismiss()
                 }
             }
@@ -54,5 +62,7 @@ struct DetailView: View {
 #Preview {
     NavigationStack {
         DetailView(friend: Friend(name: "Fred", bringing: "Steak", notes: "Lots of meat"))
+            .environment(FriendsViewModel())
+           
     }
 }
